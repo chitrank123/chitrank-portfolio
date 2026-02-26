@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* We can add custom dark mode/smooth scrolling variables here later */
+html {
+  scroll-behavior: smooth;
+}
