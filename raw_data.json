@@ -1,0 +1,42 @@
+[
+  {
+    "id": "summary",
+    "text": "Chitrank Tak is a Full-Stack AI Engineer based in Jaipur, Rajasthan. He has 3.5+ years of experience specializing in Agentic AI Architecture, orchestrating Multi-Agent workflows using LangGraph, and building high-performance systems with Python and FastAPI. He has a proven track record of reducing cloud costs by 40%."
+  },
+  {
+    "id": "skills_ai_backend",
+    "text": "Chitrank's AI and Backend technical skills include LangGraph, Multi-Agent Systems, RAG Pipelines, yt-dlp, Groq API, LangChain, HuggingFace, OpenAI, Python (Async/Await), FastAPI, Django, Express.js, and WebSockets."
+  },
+  {
+    "id": "skills_cloud_db_frontend",
+    "text": "Chitrank's Cloud, Database, and Frontend skills include AWS (EC2, CloudFront, Lambda, S3), Docker Compose, CI/CD, PostgreSQL (pgvector, Asyncpg), MongoDB, Supabase, Redis, React.js, React Native, Streamlit, and JavaScript (ES6+)."
+  },
+  {
+    "id": "exp_acuvisor_engineer",
+    "text": "As a Software Engineer at Acuvisor Insurance Brokers (Sep 2023 - Present), Chitrank spearheaded a proprietary GenAI POC chatbot using LangChain. He redesigned core API integrations reducing manual processing time by 40%, led AWS cost management initiatives to reduce monthly expenses, and optimized high-traffic Django backend modules improving API response latency by 25%."
+  },
+  {
+    "id": "exp_acuvisor_trainee_intern",
+    "text": "Previously at Acuvisor, Chitrank worked as a Software Developer Trainee and Backend Intern (Jul 2022 - Aug 2023). He integrated WebSocket principles (Socket.io) to enable real-time dashboard updates for field agents, reducing data lag by 40%. He also handled core database migrations using MySQL and MongoDB."
+  },
+  {
+    "id": "project_interviewer",
+    "text": "Chitrank built Interviewer.io, a B2C SaaS platform for real-time AI mock interviews. It features a low-latency full-duplex voice pipeline using OpenAI Whisper for transcription and Edge TTS for audio. It uses RAG to parse user resumes for context-aware questions and dynamically spawns isolated Docker containers via a FastAPI backend for session management."
+  },
+  {
+    "id": "project_tubemind",
+    "text": "Chitrank engineered TubeMind Pro, an Agentic AI Video Analysis Engine. It uses a stateful decision-making engine built with LangGraph to intelligently switch between video summarization and timestamp retrieval. It is deployed on AWS EC2 using Docker Compose and integrates Groq API for sub-second LLM inference and pgvector for hybrid search."
+  },
+  {
+    "id": "project_open_source",
+    "text": "Chitrank's open-source projects include an AWS Operational Dashboard (Python, Boto3) for monitoring EC2/S3 costs, a Personal Finance Dashboard (Streamlit, Pandas), an AI Code Reviewer (LangChain, JavaScript) that analyzes pull requests, and a Face Recognition Attendance system (OpenCV, Machine Learning)."
+  },
+  {
+    "id": "education_certifications",
+    "text": "Chitrank holds a Bachelors of Technology from Rajasthan Technical University (2019-2023) with an 8.5 GPA. He holds certifications in Agile Project Management from Atlassian, Docker Foundations, and Python for Data Analysis."
+  },
+  {
+    "id": "community_devfest",
+    "text": "Chitrank is highly active in the tech community. He recently attended DevFest Jaipur 2025 (GDG) at the Rajasthan International Center, where he focused on how the Gemini CLI is reshaping command-line workflows in real-time. He is an active open-source contributor passionate about the developer ecosystem."
+  }
+]
