@@ -109,7 +109,7 @@ const AgenticChat = () => {
     }
   };
 
-  return (
+return (
     <div className="fixed bottom-6 right-6 z-50">
       <AnimatePresence>
         {isOpen && (
@@ -117,16 +117,16 @@ const AgenticChat = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute bottom-16 right-0 w-80 md:w-96 bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden flex flex-col"
-            style={{ height: '500px' }}
+            // MOBILE FIX: w-[calc(100vw-3rem)] ensures it fits perfectly on phones, h-[60vh] prevents keyboard blocking
+            className="absolute bottom-16 right-0 w-[calc(100vw-3rem)] md:w-96 h-[60vh] md:h-[500px] bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden flex flex-col"
           >
             {/* Header */}
-            <div className="p-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center">
-              <div className="flex items-center gap-2 text-white font-medium">
+            <div className="p-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center shrink-0">
+              <div className="flex items-center gap-2 text-white font-medium text-sm md:text-base">
                 <Bot size={20} className="text-blue-400" />
                 Agentic Chitrank
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-white transition-colors">
+              <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-white transition-colors p-1">
                 <X size={20} />
               </button>
             </div>
@@ -134,12 +134,11 @@ const AgenticChat = () => {
             {/* Chat Area */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {messages.map((msg, i) => (
-                <div key={i} className={`flex items-start gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-blue-600' : 'bg-slate-700'}`}>
-                    {msg.role === 'user' ? <User size={16} className="text-white" /> : <Bot size={16} className="text-blue-400" />}
+                <div key={i} className={`flex items-start gap-2 md:gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
+                  <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-blue-600' : 'bg-slate-700'}`}>
+                    {msg.role === 'user' ? <User size={14} className="text-white" /> : <Bot size={14} className="text-blue-400" />}
                   </div>
-                  {/* Notice the whitespace-pre-wrap class to ensure bullet points format nicely! */}
-                  <div className={`p-3 rounded-2xl text-sm leading-relaxed max-w-[80%] whitespace-pre-wrap ${msg.role === 'user' ? 'bg-blue-600 text-white rounded-tr-sm' : 'bg-slate-800 text-slate-300 border border-slate-700 rounded-tl-sm'}`}>
+                  <div className={`p-3 rounded-2xl text-xs md:text-sm leading-relaxed max-w-[85%] whitespace-pre-wrap ${msg.role === 'user' ? 'bg-blue-600 text-white rounded-tr-sm' : 'bg-slate-800 text-slate-300 border border-slate-700 rounded-tl-sm'}`}>
                     {msg.text}
                   </div>
                 </div>
@@ -151,34 +150,26 @@ const AgenticChat = () => {
                     <Bot size={16} className="text-blue-400 animate-pulse" />
                   </div>
                   <div className="p-3 bg-slate-800 border border-slate-700 rounded-2xl rounded-tl-sm flex gap-1 items-center">
-                    <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce"></span>
-                    <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce delay-75"></span>
-                    <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce delay-150"></span>
+                    <span className="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce"></span>
+                    <span className="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce delay-75"></span>
+                    <span className="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce delay-150"></span>
                   </div>
                 </div>
               )}
-              {/* Invisible div to help us auto-scroll to the bottom */}
               <div ref={messagesEndRef} />
             </div>
 
             {/* Input Area */}
-            <div className="p-3 bg-slate-800 border-t border-slate-700">
-              <form 
-                onSubmit={(e) => { e.preventDefault(); handleSend(); }}
-                className="flex items-center gap-2"
-              >
+            <div className="p-3 bg-slate-800 border-t border-slate-700 shrink-0">
+              <form onSubmit={(e) => { e.preventDefault(); handleSend(); }} className="flex items-center gap-2">
                 <input 
                   type="text" 
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask about my architecture..."
-                  className="flex-1 bg-slate-900 text-white placeholder-slate-400 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500 border border-slate-700"
+                  placeholder="Ask me anything..."
+                  className="flex-1 bg-slate-900 text-white placeholder-slate-400 text-xs md:text-sm rounded-xl px-4 py-3 md:py-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500 border border-slate-700"
                 />
-                <button 
-                  type="submit"
-                  disabled={isLoading}
-                  className="p-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50"
-                >
+                <button type="submit" disabled={isLoading} className="p-3 md:p-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 disabled:opacity-50">
                   <Send size={18} />
                 </button>
               </form>
@@ -187,14 +178,13 @@ const AgenticChat = () => {
         )}
       </AnimatePresence>
 
-      {/* Floating Button */}
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-blue-500/25 transition-shadow"
+        className="w-12 h-12 md:w-14 md:h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-blue-500/25 transition-shadow"
       >
-        {isOpen ? <X size={24} className="text-white" /> : <MessageSquare size={24} className="text-white" />}
+        {isOpen ? <X size={20} className="text-white" /> : <MessageSquare size={20} className="text-white" />}
       </motion.button>
     </div>
   );
