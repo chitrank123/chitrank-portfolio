@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   ExternalLink, Github, BrainCircuit, Mic, LayoutDashboard,
   LineChart, Code2, ScanFace, GitPullRequest, Workflow,
-  ChevronDown, ChevronUp, Users, Shield, Database, Cpu, 
-  Zap, Server, Globe, FileText, Layers
+  ChevronDown, ChevronUp, Shield, Database, Cpu, 
+  Zap, Server, Globe, FileText, Layers, Download
 } from 'lucide-react';
 
 /* ─────────────────────────────────────────────
@@ -332,6 +332,77 @@ const TubeMindArchitectureDiagram = () => (
 );
 
 /* ─────────────────────────────────────────────
+   MMV AGENT WORKFLOW ARCHITECTURE DIAGRAM
+───────────────────────────────────────────── */
+const MMVAgentArchitectureDiagram = () => (
+  <svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg" className="w-full rounded-xl" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)' }}>
+    <defs>
+      <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#60a5fa" /></marker>
+      <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#34d399" /></marker>
+      <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#ef4444" /></marker>
+    </defs>
+
+    {/* Client & Initial API */}
+    <rect x="30" y="50" width="120" height="60" rx="8" fill="#1e293b" stroke="#475569" strokeWidth="2" />
+    <text x="90" y="85" fill="#f8fafc" fontSize="12" fontFamily="monospace" textAnchor="middle" fontWeight="bold">Client App</text>
+
+    <line x1="150" y1="80" x2="220" y2="80" stroke="#60a5fa" strokeWidth="2" markerEnd="url(#arrowBlue)" />
+    <text x="185" y="70" fill="#60a5fa" fontSize="10" fontFamily="monospace" textAnchor="middle">Req</text>
+
+    <rect x="220" y="50" width="140" height="60" rx="8" fill="#1d4ed8" stroke="#3b82f6" strokeWidth="2" />
+    <text x="290" y="85" fill="#eff6ff" fontSize="12" fontFamily="monospace" textAnchor="middle" fontWeight="bold">Express API</text>
+
+    {/* MongoDB Session */}
+    <line x1="360" y1="80" x2="430" y2="80" stroke="#34d399" strokeWidth="2" markerEnd="url(#arrowGreen)" />
+    <text x="395" y="70" fill="#34d399" fontSize="10" fontFamily="monospace" textAnchor="middle">Session</text>
+    
+    <rect x="430" y="50" width="120" height="60" rx="8" fill="#064e3b" stroke="#10b981" strokeWidth="2" />
+    <text x="490" y="85" fill="#d1fae5" fontSize="12" fontFamily="monospace" textAnchor="middle" fontWeight="bold">MongoDB</text>
+
+    {/* FLA Service */}
+    <line x1="290" y1="110" x2="290" y2="150" stroke="#60a5fa" strokeWidth="2" markerEnd="url(#arrowBlue)" />
+    
+    <rect x="220" y="150" width="140" height="60" rx="8" fill="#c2410c" stroke="#f97316" strokeWidth="2" />
+    <text x="290" y="185" fill="#ffedd5" fontSize="12" fontFamily="monospace" textAnchor="middle" fontWeight="bold">FLA Service</text>
+
+    {/* LangGraph State Machine Box */}
+    <rect x="400" y="140" width="450" height="250" rx="12" fill="#0f172a" stroke="#8b5cf6" strokeWidth="2" strokeDasharray="6,4" />
+    <text x="625" y="170" fill="#c4b5fd" fontSize="14" fontFamily="monospace" textAnchor="middle" fontWeight="bold">Agentic AI State Machine (LangGraph)</text>
+
+    <line x1="360" y1="180" x2="420" y2="180" stroke="#8b5cf6" strokeWidth="2" markerEnd="url(#arrowBlue)" />
+    <text x="380" y="170" fill="#8b5cf6" fontSize="10" fontFamily="monospace" textAnchor="middle">runMmv()</text>
+
+    {/* Nodes */}
+    <rect x="430" y="200" width="170" height="50" rx="6" fill="#1e1b4b" stroke="#6366f1" strokeWidth="2" />
+    <text x="515" y="230" fill="#e0e7ff" fontSize="11" fontFamily="monospace" textAnchor="middle" fontWeight="bold">1. Query Gen (Groq)</text>
+
+    <line x1="600" y1="225" x2="650" y2="225" stroke="#6366f1" strokeWidth="2" markerEnd="url(#arrowBlue)" />
+
+    <rect x="650" y="200" width="170" height="50" rx="6" fill="#1e1b4b" stroke="#6366f1" strokeWidth="2" />
+    <text x="735" y="230" fill="#e0e7ff" fontSize="11" fontFamily="monospace" textAnchor="middle" fontWeight="bold">2. SQL Validator</text>
+
+    <line x1="735" y1="250" x2="735" y2="280" stroke="#6366f1" strokeWidth="2" markerEnd="url(#arrowBlue)" />
+
+    <rect x="650" y="280" width="170" height="50" rx="6" fill="#1e1b4b" stroke="#6366f1" strokeWidth="2" />
+    <text x="735" y="310" fill="#e0e7ff" fontSize="11" fontFamily="monospace" textAnchor="middle" fontWeight="bold">3. Executor</text>
+
+    <line x1="650" y1="305" x2="600" y2="305" stroke="#6366f1" strokeWidth="2" markerEnd="url(#arrowBlue)" />
+
+    <rect x="430" y="280" width="170" height="50" rx="6" fill="#1e1b4b" stroke="#6366f1" strokeWidth="2" />
+    <text x="515" y="310" fill="#e0e7ff" fontSize="11" fontFamily="monospace" textAnchor="middle" fontWeight="bold">4. Reviewer (Groq)</text>
+
+    {/* MySQL DB */}
+    <line x1="735" y1="330" x2="735" y2="370" stroke="#ef4444" strokeWidth="2" markerEnd="url(#arrowRed)" />
+    <rect x="650" y="370" width="170" height="50" rx="8" fill="#7f1d1d" stroke="#ef4444" strokeWidth="2" />
+    <text x="735" y="400" fill="#fee2e2" fontSize="12" fontFamily="monospace" textAnchor="middle" fontWeight="bold">MySQL Database</text>
+    
+    {/* Return arrow */}
+    <path d="M430 305 Q 260 305 260 210" fill="none" stroke="#34d399" strokeWidth="2" strokeDasharray="4,4" markerEnd="url(#arrowGreen)"/>
+    <text x="320" y="295" fill="#34d399" fontSize="10" fontFamily="monospace">Matched Results JSON</text>
+  </svg>
+);
+
+/* ─────────────────────────────────────────────
    MAIN COMPONENT
 ───────────────────────────────────────────── */
 const Projects = () => {
@@ -358,6 +429,7 @@ const Projects = () => {
       tech: ["Next.js", "FastAPI", "MongoDB", "Docker", "OpenAI Whisper", "Edge TTS", "Clerk", "Pydantic", "Beanie ODM"],
       link: "#",
       github: "https://github.com/chitrank123",
+      whitepaper: "/AI Mock Interview Platform Research Paper V1 (1).pdf",
       diagram: <InterviewerArchitectureDiagram />,
       contributeText:
         "We are actively looking for contributors! Current open issues include improving RAG accuracy with chunked resume embeddings, optimizing Docker container spin-up latency, adding real-time audio waveform visualization, and enhancing the Pydantic scorecard schema with follow-up question generation.",
@@ -368,6 +440,29 @@ const Projects = () => {
         { icon: <Shield size={16} />, title: "Pydantic Schemas", detail: "Forces LLM into strict JSON output for scorecard rendering. Prevents hallucinated or malformed grading responses." },
         { icon: <Database size={16} />, title: "MongoDB + Beanie", detail: "Chosen for nested transcript arrays and dynamic scorecard objects that lack strict tabular relationships." },
         { icon: <Server size={16} />, title: "Docker Isolation", detail: "One container per interview session. ENV-injected context. Zero shared memory between concurrent users." },
+      ]
+    },
+    {
+      title: "Motor Insurance Agentic Workflow (MMV Agent)",
+      role: "AI Architecture Lead @ Acuvisor",
+      icon: <Database className="text-emerald-500" size={28} />,
+      description: "An enterprise-grade, self-correcting LangGraph pipeline designed to intelligently match vehicle variants from external government APIs (FLA) to internal insurer MySQL databases using advanced LLM querying and validation.",
+      achievements: [
+        "LangGraph State Machine: Engineered a 4-node cyclic graph (Query Generator, Validator, Executor, Reviewer) capable of auto-retrying up to 3 times if initial database queries yield no results.",
+        "SQL Security Layer: Implemented a strict Validator node that sanitizes LLM-generated SQL, preventing destructive commands (DROP, DELETE) and ensuring exact compliance with legacy schemas.",
+        "Data Ingestion & Normalization: Built robust preprocessing utility functions to clean messy, inconsistent data from external FLA payloads (normalizing CC, fuel types) before passing to the Groq agent.",
+        "High-Confidence Matching: Utilized Groq's Llama-3 70b model at Temperature 0 to hierarchically evaluate database returns against ground-truth data, outputting strict JSON arrays with confidence scores."
+      ],
+      tech: ["Node.js", "Express", "LangGraph", "Groq API", "MySQL", "MongoDB", "Sequelize"],
+      link: "#", 
+      github: "#", 
+      diagram: <MMVAgentArchitectureDiagram />,
+      contributeText: "This is a proprietary enterprise application built for Acuvisor Insurance Brokers, currently handling live production traffic for automated insurance quoting.",
+      techDeepDive: [
+        { icon: <BrainCircuit size={16} />, title: "Query Generator", detail: "Uses Llama-3 to dynamically write flexible 'LIKE %' SQL queries based on normalized vehicle input." },
+        { icon: <Shield size={16} />, title: "Validator Node", detail: "Acts as a firewall, intercepting the LLM's SQL string to guarantee no injection or destructive commands reach the DB." },
+        { icon: <Server size={16} />, title: "Executor Node", detail: "Connects to MySQL via Sequelize to run the generated query. Automatically routes back to generation if zero rows are found." },
+        { icon: <FileText size={16} />, title: "Reviewer Node", detail: "Final decision maker. Compares DB results with ground-truth input to calculate a confidence score and output strict JSON." }
       ]
     },
     {
@@ -443,7 +538,7 @@ const Projects = () => {
             Featured Architecture
           </h1>
           <p className="text-slate-600 text-lg max-w-2xl">
-            Deep dives into my production-grade SaaS platforms, AI systems, and open-source initiatives.
+            Deep dives into my production-grade SaaS platforms, AI systems, and enterprise integrations.
           </p>
         </div>
 
@@ -469,20 +564,29 @@ const Projects = () => {
                   </div>
                 </div>
                 <div className="flex gap-3 flex-shrink-0">
-                  <a href={project.github} target="_blank" rel="noreferrer"
-                    className="p-2 bg-slate-50 border border-slate-200 rounded-full text-slate-600 hover:text-slate-900 transition-colors">
-                    <Github size={20} />
-                  </a>
+                  {project.github !== "#" && (
+                    <a href={project.github} target="_blank" rel="noreferrer" className="p-2 bg-slate-50 border border-slate-200 rounded-full text-slate-600 hover:text-slate-900 transition-colors">
+                      <Github size={20} />
+                    </a>
+                  )}
                   {project.link !== "#" && (
-                    <a href={project.link} target="_blank" rel="noreferrer"
-                      className="p-2 bg-slate-50 border border-slate-200 rounded-full text-slate-600 hover:text-blue-600 transition-colors">
+                    <a href={project.link} target="_blank" rel="noreferrer" className="p-2 bg-slate-50 border border-slate-200 rounded-full text-slate-600 hover:text-blue-600 transition-colors">
                       <ExternalLink size={20} />
                     </a>
                   )}
                 </div>
               </div>
 
-              <p className="text-slate-700 text-lg mb-8 leading-relaxed max-w-4xl">{project.description}</p>
+              <p className="text-slate-700 text-lg mb-6 leading-relaxed max-w-4xl">{project.description}</p>
+
+              {/* Download Whitepaper CTA - Only renders if project has a whitepaper */}
+              {project.whitepaper && (
+                <div className="mb-8">
+                  <a href={project.whitepaper} download className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-50 text-indigo-700 font-bold rounded-xl hover:bg-indigo-100 transition-colors border border-indigo-200">
+                    <Download size={18} /> Download Architecture Whitepaper
+                  </a>
+                </div>
+              )}
 
               {/* Achievements */}
               <div className="mb-8 p-6 bg-slate-50 rounded-2xl border border-slate-100">
@@ -510,9 +614,7 @@ const Projects = () => {
                 className="w-full flex items-center justify-center gap-2 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-semibold hover:bg-slate-100 transition-colors"
               >
                 <Workflow size={20} className="text-blue-500" />
-                {expandedProject === project.title
-                  ? "Hide Architecture & Contributions"
-                  : "Explore Architecture & Contribute"}
+                {expandedProject === project.title ? "Hide Architecture Details" : "Explore Architecture Deep-Dive"}
                 {expandedProject === project.title ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
               </button>
 
@@ -532,12 +634,9 @@ const Projects = () => {
                         <h4 className="text-white font-bold text-xl flex items-center gap-2 mb-4">
                           <Workflow size={24} className="text-blue-400" /> System Architecture
                         </h4>
-                        <div className="w-full rounded-xl overflow-hidden border border-slate-700 mb-4">
+                        <div className="w-full rounded-xl overflow-hidden border border-slate-700 mb-4 bg-slate-900">
                           {project.diagram}
                         </div>
-                        <p className="text-sm leading-relaxed text-slate-400">
-                          This diagram outlines the data flow from the client interface through the API orchestration layer, into isolated AI execution containers, and back to the persistent data layer.
-                        </p>
                       </div>
 
                       {/* Tech deep dive */}
@@ -561,19 +660,9 @@ const Projects = () => {
                       {/* Contribute section */}
                       <div className="border-t border-slate-800 pt-8">
                         <h4 className="text-white font-bold text-xl flex items-center gap-2 mb-4">
-                          <GitPullRequest size={24} className="text-emerald-400" /> Open Source & Contributions
+                          <GitPullRequest size={24} className="text-emerald-400" /> Project Status
                         </h4>
-                        <p className="mb-6 leading-relaxed text-slate-300">{project.contributeText}</p>
-                        <div className="flex flex-wrap gap-4">
-                          <a href={`${project.github}/issues`} target="_blank" rel="noreferrer"
-                            className="flex items-center gap-2 px-6 py-3 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-lg hover:bg-emerald-500/20 transition-colors font-medium">
-                            <Users size={18} /> View Open Issues
-                          </a>
-                          <a href={`${project.github}/pulls`} target="_blank" rel="noreferrer"
-                            className="flex items-center gap-2 px-6 py-3 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-lg hover:bg-blue-500/20 transition-colors font-medium">
-                            <Code2 size={18} /> Read Contributing.md
-                          </a>
-                        </div>
+                        <p className="leading-relaxed text-slate-300">{project.contributeText}</p>
                       </div>
 
                     </div>
