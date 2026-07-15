@@ -2,7 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
-/* We can add custom dark mode/smooth scrolling variables here later */
+@font-face {
+  font-family: 'Fraunces';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/fraunces-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/fraunces-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/archivo-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/archivo-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/plexmono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/plexmono-600.woff2') format('woff2');
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f1e9de;
+  color: #211c17;
+}
+
+::selection {
+  background-color: #b8863f;
+  color: #f1e9de;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1e9de;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ded2c2;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cabe9f;
+}
+
+/* Status ticker: rotating lines in the sidebar, one visible at a time. */
+.ticker-line {
+  animation: tickerCycle 12s infinite;
+}
+.ticker-line:nth-child(1) { animation-delay: 0s; }
+.ticker-line:nth-child(2) { animation-delay: 4s; }
+.ticker-line:nth-child(3) { animation-delay: 8s; }
+
+@keyframes tickerCycle {
+  0% { opacity: 0; transform: translateY(6px); }
+  4% { opacity: 1; transform: translateY(0); }
+  28% { opacity: 1; transform: translateY(0); }
+  33% { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-line {
+    animation: none;
+    opacity: 1;
+    position: static !important;
+  }
+  .ticker-line:not(:first-child) {
+    display: none;
+  }
 }

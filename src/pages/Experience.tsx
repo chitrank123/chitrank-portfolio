@@ -1,13 +1,27 @@
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
     {
+      role: "Senior AI Solutions Engineer",
+      company: "Concretio",
+      date: "May 2026-Now",
+      location: "Jaipur, Rajasthan",
+      current: true,
+      tech: ["LangGraph", "OpenAI Realtime API", "FastAPI", "React", "Vertex AI", "Gemini", "Salesforce", "Claude/MCP"],
+      highlights: [
+        "Voice by Concretio: Built and now leads the team on an AI voice agent platform using OpenAI's Realtime API, including an HR candidate-screening agent synced to Zoho Recruit and 'Aria,' an AI meeting bot that joins Google Meet and posts summaries to Google Chat.",
+        "Task Review Tool: Built an AI-powered code review platform for Concretio with multi-provider LLM routing (Claude, GPT-4o, Gemini), OAuth role-based access, and webhook-triggered review automation.",
+        "Technical Leadership: Serves as technical lead on standy-bot (an internal Google Chat assistant for standups and Zoho-integrated queries) and Compass AI (an internal RFP-generation platform), reviewing and approving team output on both.",
+        "Enterprise Client Support: Reviews architecture and led the Azure Container Apps deployment for a Salesforce and Claude/MCP integration built for a healthcare billing client."
+      ]
+    },
+    {
       role: "Software Engineer",
       company: "Acuvisor Insurance Brokers",
-      date: "Sep 2023 - Present",
+      date: "Sep 2023-May 2026",
       location: "Jaipur, Rajasthan",
+      current: false,
       tech: ["LangGraph", "FastAPI", "React", "AWS EC2", "Nginx", "Express.js", "Django", "LLMs"],
       highlights: [
         "Agentic AI Architecture (MMV Agent): Engineered a self-correcting LangGraph state machine using Groq (Llama-3) to intelligently match external government vehicle APIs (FLA) with internal legacy MySQL databases, fully automating the insurance quoting pipeline.",
@@ -22,8 +36,9 @@ const Experience = () => {
     {
       role: "Software Developer Trainee",
       company: "Acuvisor Insurance Brokers",
-      date: "Jan 2023 - Aug 2023",
+      date: "Jan 2023-Aug 2023",
       location: "Jaipur, Rajasthan",
+      current: false,
       tech: ["Django", "Python", "Socket.io", "REST APIs"],
       highlights: [
         "Partner Integration: Accelerated the onboarding speed of new insurance partners by 35% through the implementation of streamlined, reusable API integration patterns in Django.",
@@ -34,8 +49,9 @@ const Experience = () => {
     {
       role: "Backend Developer Intern",
       company: "Acuvisor Insurance Brokers",
-      date: "Jul 2022 - Jan 2023",
+      date: "Jul 2022-Jan 2023",
       location: "Jaipur, Rajasthan",
+      current: false,
       tech: ["MySQL", "MongoDB", "Backend Architecture"],
       highlights: [
         "Codebase Refactoring: Evaluated and optimized existing legacy source code for better modularity and functionality, significantly reducing technical debt for future feature rollouts.",
@@ -45,89 +61,72 @@ const Experience = () => {
   ];
 
   return (
-    <div className="pt-24 pb-20 min-h-screen px-6 max-w-5xl mx-auto">
+    <div className="px-8 md:px-16 py-16 md:py-20 max-w-3xl">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">Professional Experience</h1>
-          <p className="text-slate-600 text-lg max-w-2xl">
-            My career trajectory, highlighting my transition from core database management to leading enterprise AI architecture, full-stack migrations, and technical partner integrations.
+        <div className="mb-14">
+          <div className="font-mono text-xs uppercase tracking-widest text-paper-dim font-semibold mb-3">Track Record</div>
+          <h1 className="font-serif font-light text-4xl md:text-5xl text-paper-ink mb-4 text-balance">Professional Experience</h1>
+          <p className="text-paper-dim text-base md:text-lg max-w-2xl">
+            My career trajectory, from core database management to leading enterprise AI architecture, full-stack migrations, and technical partner integrations.
           </p>
         </div>
-        
-        <div className="relative border-l-2 border-slate-200 ml-4 md:ml-8">
-          {experiences.map((exp, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="mb-16 ml-8 md:ml-12 relative"
-            >
-              {/* Timeline Dot */}
-              <span className="absolute flex items-center justify-center w-10 h-10 bg-blue-50 rounded-full -left-[52px] md:-left-[68px] ring-4 ring-white border border-blue-200 shadow-sm top-0">
-                <Briefcase size={18} className="text-blue-600" />
-              </span>
-              
-              <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
-                
-                <div className="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">{exp.role}</h3>
-                    <h4 className="text-lg font-semibold text-blue-600 mb-2">
-                      {exp.company}
-                    </h4>
-                    <div className="flex flex-wrap items-center gap-4 text-sm font-medium text-slate-500">
-                      <span className="flex items-center gap-1.5 bg-slate-50 px-3 py-1 rounded-md border border-slate-100">
-                        <Calendar size={14} /> {exp.date}
-                      </span>
-                      <span className="flex items-center gap-1.5 bg-slate-50 px-3 py-1 rounded-md border border-slate-100">
-                        <MapPin size={14} /> {exp.location}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mb-6 pb-6 border-b border-slate-100">
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tech.map((item, i) => (
-                      <span key={i} className="px-3 py-1 bg-slate-900 text-slate-50 text-xs font-bold rounded-md tracking-wide">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                
-                <ul className="space-y-4">
-                  {exp.highlights.map((item, i) => {
-                    const splitText = item.split(':');
-                    const hasPrefix = splitText.length > 1;
 
-                    return (
-                      <li key={i} className="text-slate-700 text-base leading-relaxed flex items-start gap-3">
-                        <span className="text-blue-500 mt-1 flex-shrink-0">✦</span>
-                        <span>
-                          {hasPrefix ? (
-                            <>
-                              <strong className="text-slate-900">{splitText[0]}:</strong>
-                              {splitText.slice(1).join(':')}
-                            </>
-                          ) : (
-                            item
-                          )}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
+        {experiences.map((exp, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className={`grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-6 py-9 ${index === 0 ? '' : 'border-t border-paper-rule'}`}
+          >
+            <div>
+              <div className={`font-mono text-xs pt-1 ${exp.current ? 'text-accent font-semibold' : 'text-paper-dim'}`}>{exp.date}</div>
+              {exp.current && (
+                <span className="mt-2 inline-block font-mono text-[10px] uppercase tracking-widest text-accent border border-accent px-2 py-0.5 rounded-full">Active</span>
+              )}
+            </div>
+
+            <div>
+              <h3 className="font-serif font-semibold text-2xl text-paper-ink mb-1">{exp.role}</h3>
+              <div className="text-accent text-sm font-semibold mb-1">{exp.company}</div>
+              <div className="font-mono text-xs text-paper-dim mb-5">{exp.location}</div>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {exp.tech.map((item, i) => (
+                  <span key={i} className="font-mono text-[10px] uppercase px-2.5 py-1 border border-paper-ink rounded-full text-paper-ink">
+                    {item}
+                  </span>
+                ))}
               </div>
 
-            </motion.div>
-          ))}
-        </div>
+              <ul className="space-y-3.5">
+                {exp.highlights.map((item, i) => {
+                  const splitText = item.split(':');
+                  const hasPrefix = splitText.length > 1;
+                  return (
+                    <li key={i} className="text-paper-body text-[15px] leading-relaxed flex items-start gap-3">
+                      <span className="text-accent mt-1 flex-shrink-0">&#10022;</span>
+                      <span>
+                        {hasPrefix ? (
+                          <>
+                            <strong className="text-paper-ink">{splitText[0]}:</strong>
+                            {splitText.slice(1).join(':')}
+                          </>
+                        ) : (
+                          item
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </motion.div>
+        ))}
       </motion.div>
     </div>
   );

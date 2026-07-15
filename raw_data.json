@@ -1,19 +1,23 @@
 [
   {
     "id": "summary",
-    "text": "Chitrank Tak is a Full-Stack AI Engineer based in Jaipur, Rajasthan. He has 3.5+ years of experience specializing in Agentic AI Architecture, orchestrating Multi-Agent workflows using LangGraph, and building high-performance systems with Python and FastAPI. He has a proven track record of reducing cloud costs by 40%."
+    "text": "Chitrank Tak is a Senior AI Solutions Engineer at Concretio, based in Jaipur, Rajasthan. He has 4+ years of experience specializing in Agentic AI Architecture, orchestrating Multi-Agent workflows using LangGraph, and building high-performance systems with Python and FastAPI. He has a proven track record of reducing cloud costs by 40%."
   },
   {
     "id": "skills_ai_backend",
-    "text": "Chitrank's AI and Backend technical skills include LangGraph, Multi-Agent Systems, RAG Pipelines, yt-dlp, Groq API, LangChain, HuggingFace, OpenAI, Python (Async/Await), FastAPI, Django, Express.js, and WebSockets."
+    "text": "Chitrank's AI and Backend technical skills include LangGraph, OpenAI Realtime API, Multi-Agent Systems, RAG Pipelines, yt-dlp, Groq API, LangChain, Vertex AI (Gemini), HuggingFace, OpenAI, Python (Async/Await), FastAPI, Salesforce Apex, MCP (Model Context Protocol), Django, Express.js, and WebSockets."
   },
   {
     "id": "skills_cloud_db_frontend",
-    "text": "Chitrank's Cloud, Database, and Frontend skills include AWS (EC2, CloudFront, Lambda, S3), Docker Compose, CI/CD, PostgreSQL (pgvector, Asyncpg), MongoDB, Supabase, Redis, React.js, React Native, Streamlit, and JavaScript (ES6+)."
+    "text": "Chitrank's Cloud, Database, and Frontend skills include AWS (EC2, CloudFront, Lambda, S3), Google Cloud Run and Cloud Functions, Docker Compose, CI/CD, PostgreSQL (pgvector, Asyncpg), MongoDB, Firestore, Supabase, Redis, React.js, React Native, Streamlit, and JavaScript (ES6+)."
+  },
+  {
+    "id": "exp_concretio_senior",
+    "text": "As Senior AI Solutions Engineer at Concretio (May 2026 - Present), Chitrank leads Voice by Concretio, an AI voice agent platform built on OpenAI's Realtime API, including an HR candidate-screening agent synced to Zoho Recruit and 'Aria,' an AI meeting bot that joins Google Meet and posts summaries to Google Chat. He also built the Task Review Tool, serves as technical lead on standy-bot and Compass AI, and reviews architecture and led the Azure deployment for a Salesforce and Claude/MCP integration built for a healthcare billing client."
   },
   {
     "id": "exp_acuvisor_engineer",
-    "text": "As a Software Engineer at Acuvisor Insurance Brokers (Sep 2023 - Present), Chitrank spearheaded a proprietary GenAI POC chatbot using LangChain. He redesigned core API integrations reducing manual processing time by 40%, led AWS cost management initiatives to reduce monthly expenses, and optimized high-traffic Django backend modules improving API response latency by 25%."
+    "text": "As a Software Engineer at Acuvisor Insurance Brokers (Sep 2023 - May 2026), Chitrank spearheaded a proprietary GenAI POC chatbot using LangChain. He redesigned core API integrations reducing manual processing time by 40%, led AWS cost management initiatives to reduce monthly expenses, and optimized high-traffic Django backend modules improving API response latency by 25%."
   },
   {
     "id": "exp_acuvisor_trainee_intern",
@@ -26,6 +30,26 @@
   {
     "id": "project_tubemind",
     "text": "Chitrank engineered TubeMind Pro, an Agentic AI Video Analysis Engine. It uses a stateful decision-making engine built with LangGraph to intelligently switch between video summarization and timestamp retrieval. It is deployed on AWS EC2 using Docker Compose and integrates Groq API for sub-second LLM inference and pgvector for hybrid search."
+  },
+  {
+    "id": "project_concretio_task_review",
+    "text": "Chitrank built the Task Review Tool for Concretio, an AI-powered code review platform with multi-provider LLM routing across Claude, GPT-4o, and Gemini. It features Google OAuth and email/password authentication with role-based access control, and automated webhook-triggered review pipelines that email the team when a commit or pull-request review completes."
+  },
+  {
+    "id": "project_voice_by_concretio",
+    "text": "Chitrank built Voice by Concretio, an AI voice agent platform, and now leads the team on it. It uses OpenAI's Realtime API for speech-to-speech conversation with no separate transcription step, and powers two live surfaces: an HR candidate-screening agent synced to Zoho Recruit, and 'Aria,' an AI meeting bot that joins Google Meet calls via Recall.ai and posts GPT-4o-mini-generated summaries to Google Chat. It runs across staging and production Heroku environments with a SQLAlchemy/Postgres data layer."
+  },
+  {
+    "id": "project_compass_ai",
+    "text": "Chitrank is a contributing engineer and technical lead on Compass AI, an internal Concretio platform that generates RFP responses and proposals from ingested documents. It uses Google Vertex AI's RAG corpus tooling with Gemini for generation, a Fastify/TypeScript backend across a modular monorepo, and Firebase for auth, documents, and storage."
+  },
+  {
+    "id": "project_standy_bot",
+    "text": "Chitrank is technical lead on standy-bot, an internal Google Chat assistant at Concretio for standups, availability tracking, task reminders, and Zoho Projects/People queries. It runs on Google Cloud Functions Framework and Cloud Run, using the Gemini API for natural-language understanding, deployed through a Cloud Build pipeline."
+  },
+  {
+    "id": "project_healthcare_client_mcp",
+    "text": "Chitrank serves as senior engineer, reviewing architecture and leading the Azure deployment, for a Salesforce and Claude/MCP integration built for a healthcare billing client. The system lets billing staff pull up a claim by number and generate denial-code-specific insurance appeal letters grounded in real Salesforce case data, exposed as a remote MCP server authenticated via OAuth 2.1 with PKCE."
   },
   {
     "id": "project_open_source",

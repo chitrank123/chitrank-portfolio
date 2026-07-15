@@ -32,29 +32,34 @@ const CustomCursor = () => {
   // Hide the custom cursor on mobile devices
   if (typeof window !== 'undefined' && window.innerWidth <= 768) return null;
 
+  const ringSize = isHovering ? 56 : 28;
+
   return (
     <>
-      {/* The tiny solid dot that exactly tracks the cursor */}
+      {/* Precise dot: tracks instantly, hides on hover since the ring takes over */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-blue-600 rounded-full pointer-events-none z-[10000]"
-        animate={{ 
-          x: mousePosition.x - 4, 
-          y: mousePosition.y - 4,
-          scale: isHovering ? 0 : 1
+        className="fixed top-0 left-0 w-[6px] h-[6px] rounded-full pointer-events-none z-[10000] mix-blend-difference bg-white"
+        animate={{
+          x: mousePosition.x - 3,
+          y: mousePosition.y - 3,
+          scale: isHovering ? 0 : 1,
         }}
-        transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
+        transition={{ type: 'tween', ease: 'easeOut', duration: 0.08 }}
       />
-      
-      {/* The larger, smooth-trailing ring */}
+
+      {/* Trailing ring: outlined normally, inverts to a filled disc on hover.
+          mix-blend-difference means it self-adjusts contrast over both the
+          dark sidebar and the light paper content, no per-section overrides needed. */}
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border border-blue-400 rounded-full pointer-events-none z-[9999] flex items-center justify-center bg-blue-500/10 backdrop-blur-[1px]"
-        animate={{ 
-          x: mousePosition.x - 20, 
-          y: mousePosition.y - 20,
-          scale: isHovering ? 1.5 : 1,
-          borderColor: isHovering ? 'rgba(37, 99, 235, 0.8)' : 'rgba(96, 165, 250, 0.5)'
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] mix-blend-difference border-2 border-white"
+        animate={{
+          x: mousePosition.x - ringSize / 2,
+          y: mousePosition.y - ringSize / 2,
+          width: ringSize,
+          height: ringSize,
+          backgroundColor: isHovering ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0)',
         }}
-        transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.5 }}
+        transition={{ type: 'spring', stiffness: 350, damping: 26, mass: 0.4 }}
       />
     </>
   );

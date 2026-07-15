@@ -66,10 +66,13 @@ const AgenticChat = () => {
             4. BOUNDARIES: If the user asks something outside the context below, say: "I don't have that info, but you can email Chitrank at cttak365@gmail.com!"
 
             CHITRANK's CONTEXT:
-            - Role: Full-Stack AI Engineer in Jaipur (3.5+ yrs).
-            - Top Skills: Agentic AI, LangGraph, RAG pipelines, Python (FastAPI/Django), AWS, Docker, React.
-            - Project 1 (Interviewer.io): Built a real-time AI mock interview SaaS using OpenAI Whisper, RAG, and isolated Docker containers via FastAPI.
-            - Project 2 (TubeMind Pro): Built a LangGraph-powered video analysis engine deployed on AWS EC2 using Groq API and pgvector.
+            - Role: Senior AI Solutions Engineer at Concretio, based in Jaipur (4+ yrs experience). Previously Software Engineer at Acuvisor Insurance Brokers (Sep 2023-May 2026).
+            - Top Skills: Agentic AI, LangGraph, RAG pipelines, real-time voice AI, Python (FastAPI/Django), AWS, Docker, React.
+            - Project 1 (Voice by Concretio): Built and now leads the team on an AI voice agent platform using OpenAI's Realtime API - an HR screening agent synced to Zoho Recruit, plus "Aria," a Google Meet bot that summarizes calls to Google Chat.
+            - Project 2 (Task Review Tool, Concretio): Built an AI-powered code review platform for Concretio with multi-provider LLM routing (Claude, GPT-4o, Gemini), OAuth role-based access, and webhook-triggered review pipelines.
+            - Project 3 (Interviewer.io): Built a real-time AI mock interview SaaS using OpenAI Whisper, RAG, and isolated Docker containers via FastAPI.
+            - Project 4 (MMV Agent): Built a self-correcting LangGraph state machine at Acuvisor that matches government vehicle data to internal insurer databases, automating insurance quoting.
+            - Also technical lead on standy-bot (internal Google Chat assistant) and Compass AI (internal RFP-generation platform) at Concretio, and reviews architecture plus led Azure deployment for a healthcare billing client's Salesforce/Claude MCP integration.
             - Work (Acuvisor): Spearheaded a GenAI chatbot, reduced AWS costs by 40%, cut API latency by 25%, reduced data sync lag by 40% with WebSockets.
             - Education: B.Tech RTU (8.5 GPA). Active in GDG DevFest Jaipur.`
           },
@@ -118,15 +121,15 @@ return (
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             // MOBILE FIX: w-[calc(100vw-3rem)] ensures it fits perfectly on phones, h-[60vh] prevents keyboard blocking
-            className="absolute bottom-16 right-0 w-[calc(100vw-3rem)] md:w-96 h-[60vh] md:h-[500px] bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden flex flex-col"
+            className="absolute bottom-16 right-0 w-[calc(100vw-3rem)] md:w-96 h-[60vh] md:h-[500px] bg-panel rounded-2xl shadow-2xl border border-panel-line overflow-hidden flex flex-col"
           >
             {/* Header */}
-            <div className="p-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center shrink-0">
-              <div className="flex items-center gap-2 text-white font-medium text-sm md:text-base">
-                <Bot size={20} className="text-blue-400" />
+            <div className="p-4 bg-panel-line/30 border-b border-panel-line flex justify-between items-center shrink-0">
+              <div className="flex items-center gap-2 text-panel-text font-mono text-sm md:text-base">
+                <Bot size={20} className="text-accent" />
                 Agentic Chitrank
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-white transition-colors p-1">
+              <button onClick={() => setIsOpen(false)} className="text-panel-dim hover:text-panel-text transition-colors p-1">
                 <X size={20} />
               </button>
             </div>
@@ -135,24 +138,24 @@ return (
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex items-start gap-2 md:gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
-                  <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-blue-600' : 'bg-slate-700'}`}>
-                    {msg.role === 'user' ? <User size={14} className="text-white" /> : <Bot size={14} className="text-blue-400" />}
+                  <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-accent' : 'bg-panel-line/40'}`}>
+                    {msg.role === 'user' ? <User size={14} className="text-panel" /> : <Bot size={14} className="text-accent" />}
                   </div>
-                  <div className={`p-3 rounded-2xl text-xs md:text-sm leading-relaxed max-w-[85%] whitespace-pre-wrap ${msg.role === 'user' ? 'bg-blue-600 text-white rounded-tr-sm' : 'bg-slate-800 text-slate-300 border border-slate-700 rounded-tl-sm'}`}>
+                  <div className={`p-3 rounded-2xl text-xs md:text-sm leading-relaxed max-w-[85%] whitespace-pre-wrap ${msg.role === 'user' ? 'bg-accent text-panel rounded-tr-sm' : 'bg-panel-line/30 text-panel-dim border border-panel-line rounded-tl-sm'}`}>
                     {msg.text}
                   </div>
                 </div>
               ))}
-              
+
               {isLoading && (
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-                    <Bot size={16} className="text-blue-400 animate-pulse" />
+                  <div className="w-8 h-8 rounded-full bg-panel-line/40 flex items-center justify-center shrink-0">
+                    <Bot size={16} className="text-accent animate-pulse" />
                   </div>
-                  <div className="p-3 bg-slate-800 border border-slate-700 rounded-2xl rounded-tl-sm flex gap-1 items-center">
-                    <span className="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce"></span>
-                    <span className="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce delay-75"></span>
-                    <span className="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce delay-150"></span>
+                  <div className="p-3 bg-panel-line/30 border border-panel-line rounded-2xl rounded-tl-sm flex gap-1 items-center">
+                    <span className="w-1.5 h-1.5 bg-panel-dim rounded-full animate-bounce"></span>
+                    <span className="w-1.5 h-1.5 bg-panel-dim rounded-full animate-bounce delay-75"></span>
+                    <span className="w-1.5 h-1.5 bg-panel-dim rounded-full animate-bounce delay-150"></span>
                   </div>
                 </div>
               )}
@@ -160,16 +163,16 @@ return (
             </div>
 
             {/* Input Area */}
-            <div className="p-3 bg-slate-800 border-t border-slate-700 shrink-0">
+            <div className="p-3 bg-panel-line/30 border-t border-panel-line shrink-0">
               <form onSubmit={(e) => { e.preventDefault(); handleSend(); }} className="flex items-center gap-2">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask me anything..."
-                  className="flex-1 bg-slate-900 text-white placeholder-slate-400 text-xs md:text-sm rounded-xl px-4 py-3 md:py-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500 border border-slate-700"
+                  className="flex-1 bg-panel text-panel-text placeholder-panel-dim text-xs md:text-sm rounded-xl px-4 py-3 md:py-2.5 focus:outline-none focus:ring-1 focus:ring-accent border border-panel-line"
                 />
-                <button type="submit" disabled={isLoading} className="p-3 md:p-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 disabled:opacity-50">
+                <button type="submit" disabled={isLoading} className="p-3 md:p-2.5 bg-accent text-panel rounded-xl hover:opacity-90 disabled:opacity-50">
                   <Send size={18} />
                 </button>
               </form>
@@ -182,9 +185,9 @@ return (
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-12 h-12 md:w-14 md:h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-blue-500/25 transition-shadow"
+        className="w-12 h-12 md:w-14 md:h-14 bg-accent rounded-full flex items-center justify-center shadow-lg hover:shadow-accent/25 transition-shadow"
       >
-        {isOpen ? <X size={20} className="text-white" /> : <MessageSquare size={20} className="text-white" />}
+        {isOpen ? <X size={20} className="text-panel" /> : <MessageSquare size={20} className="text-panel" />}
       </motion.button>
     </div>
   );
